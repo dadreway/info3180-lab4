@@ -7,10 +7,9 @@
 <p>Files: {{ files }}</p>
 <ul>
 {% for fs in files %}
-{% if not (files.lower().endswith(('.png','.jpg', '.jpeg','.txt'))) %}
+{% if not (fs.lower().endswith(('.png','.jpg', '.jpeg'))) %}
     <li> {{fs}} </li>
-    
-{% endif %}
+{% endif %}   
 {% endfor %}
 </ul>
 

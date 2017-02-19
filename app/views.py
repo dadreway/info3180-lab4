@@ -21,7 +21,7 @@ def home():
 
 @app.route('/filelisting', methods=['POST','GET'])
 def check():
-    if not session.get('logged in'):
+    if not session.get('logged_in'):
         abort(401)
         
     return render_template('showfiles.html', files=getfiles())
@@ -31,7 +31,8 @@ def getfiles():
     
     for subdir, dirs, files in os.walk(app.config['UPLOAD_FOLDER']):
         for file in files:
-            allfiles.append(file)
+            if not file.startswith('.'):
+                allfiles.append(file)
     return allfiles
 
 
